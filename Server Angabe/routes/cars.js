@@ -2,7 +2,7 @@ const express = require('express');
 const {
   getCars,
   deleteCar,
-  changeStatusCar,
+  changeStatus,
   addCar,
 } = require('../controllers/cars');
 
@@ -10,7 +10,7 @@ const router = express.Router();
 
 // Routes
 router.get('/cars', getCars);
-router.patch('/cars/:id', changeStatusCar);
+router.patch('/cars/:id', changeStatus);
 router.delete('/cars/:id', deleteCar);
 router.post('/cars', addCar);
 

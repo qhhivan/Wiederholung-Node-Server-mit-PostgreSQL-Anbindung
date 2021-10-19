@@ -1,17 +1,29 @@
-DELETE http://localhost:3000/carsssss/2 
+GET http://localhost:3000/cars
+# Funktioniert
+
+
 ###
-DELETE http://localhost:3000/cars/4
+
+#Soll nicht Funktionieren
+DELETE http://localhost:3000/notcars/2 
 ###
+
+#Soll Funktionieren
+#geht nicht
+DELETE http://localhost:3000/cars/2
+###
+
+#geht nicht
 PATCH http://localhost:3000/cars/1
 Content-Type: application/json
 
 {
-    "status": "sold",
-    "title": "VERKAUFT"
+    "id": "1",
+    "status": "sold"
 }
 ###
-GET http://localhost:3000/cars
 
+#geht nicht
 # Vorgegebenes INSERT
 POST http://localhost:3000/cars
 Content-Type: application/json
