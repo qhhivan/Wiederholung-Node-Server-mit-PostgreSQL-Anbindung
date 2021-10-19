@@ -12,10 +12,10 @@ async function getCars() {
 async function changeStatus(id, status) {
   try {
     // Das Auto holen
-    const { rows } = await db.query('Select * from cars where id = $1', [id]);
+    const { car } = await db.query('Select * from cars where id = $1', [id]);
 
     // Wenn es dieses Auto nicht gibt soll eine Fehlermeldung ausgegeben werden
-    if (rows[0] === undefined) {
+    if (car[0] === undefined) {
       return {
         code: 404,
         data: 'Not found',
@@ -36,5 +36,26 @@ async function changeStatus(id, status) {
     return { code: 500, data: error.message };
   }
 }
+
 // c. Route zum Löschen eines Autos.
+async function deleteCar(id) {
+  // Überprüfen ob es dieses Auto gibt
+  const car = await db.query('Select * from car where id = $1', [id]);
+
+  if (car[0] === undefined) {
+    return {
+      code: 404,
+      data: 'Not found',
+    };
+  }
+
+  try {
+    // If found delete
+    await db.query('Delete from car where id = $1', [id]);
+    return { code: 200, data: 'Deleted' };
+  } catch (error) {
+    return { code: 500, data: error.message };
+  }
+}
+
 // d. Route zum Einfügen eines neuen Autos. Daten:
