@@ -1,6 +1,19 @@
-# Vorgegebenes INSERT
+DELETE http://localhost:3000/carsssss/2 
+###
+DELETE http://localhost:3000/cars/4
+###
+PATCH http://localhost:3000/cars/1
+Content-Type: application/json
 
-post http://localhost:3000/cars
+{
+    "status": "sold",
+    "title": "VERKAUFT"
+}
+###
+GET http://localhost:3000/cars
+
+# Vorgegebenes INSERT
+POST http://localhost:3000/cars
 Content-Type: application/json
 
 {

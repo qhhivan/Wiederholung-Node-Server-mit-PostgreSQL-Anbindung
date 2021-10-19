@@ -8,6 +8,7 @@ const {
 
 const router = express.Router();
 
+// Routes
 router.get('/cars', getCars);
 router.patch('/cars/:id', changeStatusCar);
 router.delete('/cars/:id', deleteCar);
